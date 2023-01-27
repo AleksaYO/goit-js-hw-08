@@ -1,15 +1,14 @@
-import throttle from "lodash.throttle";
+import throttle from 'lodash.throttle';
 
-const form = document.querySelector(".feedback-form");
+const form = document.querySelector('.feedback-form');
 const email = document.querySelector('input[name="email"]');
 const message = document.querySelector('textarea[name="message"]');
-const btn = document.querySelector('button[type="submit"]');
 
-const STORAGE_KEY = "feedback-form-state";
-form.addEventListener("submit", onFormSubmit);
+const STORAGE_KEY = 'feedback-form-state';
+form.addEventListener('submit', onFormSubmit);
 
-form.addEventListener("input", throttle(onInputLocalStorage, 500));
-window.addEventListener("DOMContentLoaded", onInputSavedValue);
+form.addEventListener('input', throttle(onInputLocalStorage, 500));
+window.addEventListener('DOMContentLoaded', onInputSavedValue);
 
 let formValues = {
   email,
@@ -38,8 +37,8 @@ function onInputSavedValue() {
 function onFormSubmit(event) {
   event.preventDefault();
 
-  if (email.value === "" || message.value === "") {
-    alert("Усі поля повинні бути заповненні!");
+  if (email.value === '' || message.value === '') {
+    alert('Усі поля повинні бути заповненні!');
   }
   console.log(`Email: ${email.value}, Message: ${message.value}`);
   event.currentTarget.reset();
