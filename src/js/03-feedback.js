@@ -28,7 +28,7 @@ function onInputLocalStorage(event) {
 function onInputSavedValue() {
   const storageValues = localStorage.getItem(STORAGE_KEY);
   const storageParse = JSON.parse(storageValues);
-  if (STORAGE_KEY) {
+  if (storageParse) {
     email.value = storageParse.email;
     message.value = storageParse.message;
   }
@@ -39,6 +39,7 @@ function onFormSubmit(event) {
 
   if (email.value === '' || message.value === '') {
     alert('Усі поля повинні бути заповненні!');
+    return;
   }
   console.log(`Email: ${email.value}, Message: ${message.value}`);
   event.currentTarget.reset();
